@@ -1,12 +1,15 @@
-import 'react-big-calendar/lib/css/react-big-calendar.css';
+import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop'
 import { useMemo, useState, useCallback} from 'react';
 import { Calendar, dayjsLocalizer } from 'react-big-calendar';
 import dayjs from 'dayjs';
-
+import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
+import "react-big-calendar/lib/css/react-big-calendar.css";
 
 
 
 export default function MyCalendar (props){
+
+  const DnDCalendar = withDragAndDrop(Calendar)
 
   const [myEvents, setMyEvents] = useState([
     {
@@ -45,17 +48,42 @@ export default function MyCalendar (props){
 
   const { defaultDate, scrollToTime } = useMemo(
     () => ({
-      defaultDate: new Date(2015, 3, 12),
+      defaultDate: new Date(),
       scrollToTime: new Date(1970, 1, 1, 6),
     }),
     []
   )
 
+  const resizeEvent = useCallback(
+    ({ event, start, end }) => {
+      setMyEvents((prev) => {
+        const existing = prev.find((ev) => ev.id === event.id) ?? {}
+        const filtered = prev.filter((ev) => ev.id !== event.id)
+        return [...filtered, { ...existing, start, end }]
+      })
+    },
+    [setMyEvents]
+  )
 
+  const moveEvent = useCallback(
+    ({ event, start, end, isAllDay: droppedOnAllDaySlot = false }) => {
+      const { allDay } = event
+      if (!allDay && droppedOnAllDaySlot) {
+        event.allDay = true
+      }
+
+      setMyEvents((prev) => {
+        const existing = prev.find((ev) => ev.id === event.id) ?? {}
+        const filtered = prev.filter((ev) => ev.id !== event.id)
+        return [...filtered, { ...existing, start, end, allDay }]
+      })
+    },
+    [setMyEvents]
+  )
   
  return  (
   <div>
-    <Calendar
+    <DnDCalendar
       localizer={localizer}
      // events={myEventsList}
       startAccessor="start"
@@ -65,7 +93,12 @@ export default function MyCalendar (props){
       onSelectEvent={handleSelectEvent}
       onSelectSlot={handleSelectSlot}
       selectable
+      defaultDate={defaultDate}
       scrollToTime={scrollToTime}
+      draggableAccessor={(event) => true}
+      onEventDrop={moveEvent}
+      onEventResize={resizeEvent}
+      
     />
   </div>
 );
