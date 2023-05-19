@@ -40,10 +40,10 @@ export default function QuotingToolRow(props) {
         <InputLabel id="demo-select-small-label">{label}</InputLabel>
         <Select
           labelId="demo-select-small-label"
-          id="demo-select-small"
+          id={label + id}
           name={label}
           value={parameter}
-          label={`${label}`}
+          label={label}
           onChange={e=>handleChange(e.target.value)}
         >
           {options.map((option, index) => {
@@ -71,7 +71,7 @@ export default function QuotingToolRow(props) {
     <FormControl sx={{ m: 1, width: '12ch' }} size="small">
       <TextField   
         size="small"   
-        id="outlined-number"
+        id={"batteries" + id}
         label="Batt. / string"
         type="number"
         onChange={(e)=>setBatteries(e.target.value)}
@@ -87,7 +87,7 @@ export default function QuotingToolRow(props) {
     <FormControl sx={{ m: 1, width: '12ch' }} size="small">
       <TextField   
         size="small"   
-        id="outlined-number"
+        id={"cabs"+id}
         label="Strings/unit"
         type="number"
         onChange={(e)=>setCabs(e.target.value)}
@@ -104,7 +104,7 @@ export default function QuotingToolRow(props) {
     <FormControl sx={{ m: 1, width: '10ch' }} size="small">
       <TextField   
         size="small"   
-        id="outlined-number"
+        id={"kva" + id}
         label="kVA"
         type="number"
         onChange={(e)=>setKva(e.target.value)}
@@ -120,7 +120,7 @@ export default function QuotingToolRow(props) {
     <FormControl sx={{ m: 1, width: '25ch' }} size="small">
       <TextField   
         size="small"   
-        id="outlined-number"
+        id={"Mode" + id}
         label="Model"   
         onChange={(e)=>setModel(e.target.value)}
         value={model}

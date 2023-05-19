@@ -43,6 +43,16 @@ export default function ContactInfoForm({price, setAdjPrice, formData, adjPrice}
   }, [mult, years, visitsPerYear, upsPm, setAdjPrice, price, coverage]);
 
 
+  function setVisitsPerYearAndUpsPms(e){
+
+      setVisitsPerYear(e)
+
+      if (upsPm > e) {
+        setUpsPm(e)
+      }
+      
+
+  }
 
 
   function mapValues(options, parameter, label, setValue) {
@@ -51,7 +61,7 @@ export default function ContactInfoForm({price, setAdjPrice, formData, adjPrice}
         <InputLabel id="demo-select-small-label">{label}</InputLabel>
         <Select
           labelId="demo-select-small-label"
-          id="demo-select-small"
+          id={label}
           name={label}
           value={parameter}
           label={`${label}`}
@@ -80,7 +90,7 @@ export default function ContactInfoForm({price, setAdjPrice, formData, adjPrice}
   }
 
   let coverageRange = mapValues(["PM Only", "Bronze", "Silver", "Gold"], coverage, "Coverage", setCoverage);
-  let visitsPerYearRange = mapValues([1, 2, 3, 4, 5, 6, 7, 8], visitsPerYear, "Annual Visits", setVisitsPerYear);
+  let visitsPerYearRange = mapValues([1, 2, 3, 4, 5, 6, 7, 8], visitsPerYear, "Annual Visits", setVisitsPerYearAndUpsPms);
   let yearsRange = mapValues([1, 2, 3, 4, 5, 6, 7, 8], years, "Years", setYears);
   let annualUpsPmsRange = mapValues(setAnnualUpsRange(visitsPerYear), upsPm, "UPS PMs", setUpsPm);
 

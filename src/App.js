@@ -6,6 +6,7 @@ import ButtonAppBar from "./ButtonAppBar";
 import { Route, Switch } from "react-router-dom";
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import MyCalendar from "./MyCalendar";
 
 
 function App() {
@@ -24,6 +25,9 @@ function App() {
         <Route exact path="/quotingtool">
           <QuotingTool />
         </Route>   
+        <Route exact path="/calendar">
+          <MyCalendar />
+        </Route>  
       </Switch>
 
       </LocalizationProvider>

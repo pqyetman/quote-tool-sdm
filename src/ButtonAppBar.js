@@ -42,6 +42,10 @@ export default function ButtonAppBar() {
           <NavLink to="/quotingtool" style={linkStyles}>
             <Button color="inherit">Quoting Tool</Button>
           </NavLink>  
+
+          <NavLink to="/calendar" style={linkStyles}>
+            <Button color="inherit">Calendar</Button>
+          </NavLink> 
             
         </Toolbar>
       </AppBar>
