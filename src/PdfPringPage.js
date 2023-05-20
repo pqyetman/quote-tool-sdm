@@ -75,7 +75,7 @@ export default function PdfPricingPage(props) {
       modelArray.push(data[i].model);
       kvaArray.push(data[i].kva.toString());
       battArray.push(data[i].batteries.toString());
-      stringsArray.push(data[i].cabinets.toString());
+      stringsArray.push(data[i].strings.toString());
     }
 
     return [

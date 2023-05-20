@@ -1,6 +1,6 @@
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop'
 import { useMemo, useState, useCallback} from 'react';
-import { Calendar, dayjsLocalizer } from 'react-big-calendar';
+import { Calendar, Views, dayjsLocalizer } from 'react-big-calendar';
 import dayjs from 'dayjs';
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
@@ -27,6 +27,8 @@ export default function MyCalendar (props){
     },
   ])
 
+  const [view, setView] = useState(Views.MONTH)
+
   const localizer = dayjsLocalizer(dayjs)
 
   const handleSelectSlot = useCallback(
@@ -46,16 +48,19 @@ export default function MyCalendar (props){
     []
   )
 
-  const { defaultDate, scrollToTime } = useMemo(
-    () => ({
-      defaultDate: new Date(),
-      scrollToTime: new Date(1970, 1, 1, 6),
-    }),
-    []
-  )
+  const onView = useCallback((newView) => setView(newView), [setView])
+
+  // const { defaultDate, scrollToTime } = useMemo(
+  //   () => ({
+  //     defaultDate: new Date(),
+  //     scrollToTime: new Date(1970, 1, 1, 6),
+  //   }),
+  //   []
+  // )
 
   const resizeEvent = useCallback(
     ({ event, start, end }) => {
+      console.log(event)
       setMyEvents((prev) => {
         const existing = prev.find((ev) => ev.id === event.id) ?? {}
         const filtered = prev.filter((ev) => ev.id !== event.id)
@@ -93,11 +98,14 @@ export default function MyCalendar (props){
       onSelectEvent={handleSelectEvent}
       onSelectSlot={handleSelectSlot}
       selectable
-      defaultDate={defaultDate}
-      scrollToTime={scrollToTime}
+      onView={onView}
+      view={view}
+      // defaultDate={defaultDate}
+      // scrollToTime={scrollToTime}
       draggableAccessor={(event) => true}
       onEventDrop={moveEvent}
       onEventResize={resizeEvent}
+      popup
       
     />
   </div>
