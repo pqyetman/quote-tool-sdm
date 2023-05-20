@@ -6,10 +6,9 @@ import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
 
+const DnDCalendar = withDragAndDrop(Calendar)
 
 export default function MyCalendar (props){
-
-  const DnDCalendar = withDragAndDrop(Calendar)
 
   const [myEvents, setMyEvents] = useState([
     {
@@ -26,6 +25,10 @@ export default function MyCalendar (props){
       end: new Date(2023, 4, 20),
     },
   ])
+
+
+
+
 
   const [view, setView] = useState(Views.MONTH)
 
@@ -50,13 +53,13 @@ export default function MyCalendar (props){
 
   const onView = useCallback((newView) => setView(newView), [setView])
 
-  // const { defaultDate, scrollToTime } = useMemo(
-  //   () => ({
-  //     defaultDate: new Date(),
-  //     scrollToTime: new Date(1970, 1, 1, 6),
-  //   }),
-  //   []
-  // )
+  const { defaultDate } = useMemo(
+    () => ({
+      defaultDate: new Date(),
+    
+    }),
+    []
+  )
 
   const resizeEvent = useCallback(
     ({ event, start, end }) => {
@@ -100,8 +103,7 @@ export default function MyCalendar (props){
       selectable
       onView={onView}
       view={view}
-      // defaultDate={defaultDate}
-      // scrollToTime={scrollToTime}
+      defaultDate={defaultDate}    
       draggableAccessor={(event) => true}
       onEventDrop={moveEvent}
       onEventResize={resizeEvent}
