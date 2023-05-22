@@ -98,7 +98,7 @@ export default function MyCalendar (props){
       endAccessor="end"
       style={{ height: 500 }}
       events={myEvents}
-      onSelectEvent={handleSelectEvent}
+      onDoubleClickEvent={handleSelectEvent}
       onSelectSlot={handleSelectSlot}
       selectable
       onView={onView}

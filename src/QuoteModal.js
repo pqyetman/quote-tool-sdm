@@ -31,6 +31,7 @@ export default function QuoteModal(props) {
    
     passFormData();
     setOpen(true);
+    console.log(formData);
   };
 
   const handleClose = () => {

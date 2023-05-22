@@ -98,7 +98,7 @@ export default function QuotingTool() {
           kva: data.kva,
           qty: data.qty,
           batteries: data.batteries,
-          strings: data.cabinets,
+          strings: data.strings,
         },
       ]);
     }

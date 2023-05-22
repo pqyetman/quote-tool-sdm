@@ -25,7 +25,7 @@ export default function QuotingToolRow(props) {
       kva: kva,
       qty: qty,
       batteries: batteries,
-      cabinets: cabs,
+      strings: cabs,
     });
   },[manufacturer, model, kva, qty, batteries, cabs, id]);
 
