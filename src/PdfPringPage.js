@@ -122,24 +122,27 @@ export default function PdfPricingPage(props) {
         columns: [
           {
             // auto-sized columns have their widths based on their content
-            width: 100,
+            width: 250,
             text: [`${name} \n`, `${title} \n`, `${company} \n`, `${email} \n`],
           },
 
           {
-            // star-sized columns fill the remaining space
-            // if there's more than one star-column, available width is divided equally
-            width: 200,
+            width: '*',
+            text: ''
+          },
+
+          {            
+            width: 250,
             text: [
               "Quote Number \n",
               `${siteAddress} \n`,
               `${siteCity}, ${siteState}, ${siteZip} \n`,
               `Start Date: ${formatDate(startDate)} \n`,
             ],
+            alignment: 'right',
           },
         ],
         // optional space between columns
-        columnGap: 275,
         margin: [10, 20, 10, 0],
       },
       {

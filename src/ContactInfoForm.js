@@ -111,7 +111,7 @@ export default function ContactInfoForm({price, setAdjPrice, formData, adjPrice}
 
   const numField = (value, setValue, label) => {
     return (
-      <FormControl sx={{ m: 1, width: "12ch" } } size="small">
+      <FormControl sx={{  width: "12ch"  } } size="small">
       <TextField
         required
         type="number"
@@ -149,10 +149,12 @@ export default function ContactInfoForm({price, setAdjPrice, formData, adjPrice}
       autoComplete="off"
       
     >
-       {multRange}  
-       <MobileDatePicker label="Start Date" value={startDate} onChange={(newValue) => {setStartDate(newValue); console.log(newValue)}} />   
+        
+       <MobileDatePicker label="Start Date" value={startDate} onChange={(newValue) => {setStartDate(newValue); console.log(newValue)}} />  
+       {multRange} 
+
       <div>
-       
+        
         {coverageRange}
         {visitsPerYearRange}
         {yearsRange}

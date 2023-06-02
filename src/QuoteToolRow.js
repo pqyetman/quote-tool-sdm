@@ -72,7 +72,7 @@ export default function QuotingToolRow(props) {
       <TextField   
         size="small"   
         id={"batteries" + id}
-        label="Batt. / string"
+        label="Batt. per cabinet"
         type="number"
         onChange={(e)=>setBatteries(e.target.value)}
         value={batteries}
@@ -88,7 +88,7 @@ export default function QuotingToolRow(props) {
       <TextField   
         size="small"   
         id={"cabs"+id}
-        label="Strings/unit"
+        label="Cabs. per unit"
         type="number"
         onChange={(e)=>setCabs(e.target.value)}
         value={cabs}
