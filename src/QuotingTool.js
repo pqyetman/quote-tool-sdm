@@ -20,13 +20,13 @@ export default function QuotingTool() {
   function calcMultipier(data) {
     let kvaArr = data.map((data) => {
       if (+data.kva <= 100) {
-        return Number((data.qty * 0.25 + +data.strings * 0.25).toFixed(2));
+        return Number((data.qty * 0.25 + +data.strings * data.qty *0.25 ).toFixed(2));
       } else if (+data.kva <= 300) {
-        return Number((data.qty * 0.33 + +data.strings * 0.33).toFixed(2));
+        return Number((data.qty * 0.33 + +data.strings * data.qty * 0.33).toFixed(2));
       } else if (+data.kva <= 500) {
-        return Number((data.qty * 0.45 + +data.strings * 0.45).toFixed(2));
+        return Number((data.qty * 0.45 + +data.strings * data.qty * 0.45).toFixed(2));
       } else {
-        return Number((data.qty * 0.5 + +data.strings * 0.5).toFixed(2));
+        return Number((data.qty * 0.5 + +data.strings * data.qty * 0.5).toFixed(2));
       }
     });
 
