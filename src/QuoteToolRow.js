@@ -11,7 +11,6 @@ export default function QuotingToolRow(props) {
   const [model, setModel] = React.useState("Model");
   const [kva, setKva] = React.useState(0);
   const [qty, setQty] = React.useState(0);
-  const [batteries, setBatteries] = React.useState(0);
   const [cabs, setCabs] = React.useState(0);
 
   const { id, addFormData} = props;
@@ -23,11 +22,10 @@ export default function QuotingToolRow(props) {
       manufacturer: manufacturer,
       model: model,
       kva: kva,
-      qty: qty,
-      batteries: batteries,
+      qty: qty,  
       strings: cabs,
     });
-  },[manufacturer, model, kva, qty, batteries, cabs, id]);
+  },[manufacturer, model, kva, qty, cabs, id]);
 
 
   
@@ -67,21 +65,7 @@ export default function QuotingToolRow(props) {
   let manufacturerRange = mapValues(["Manufacturer", "APC", "Schneider", "Mitsubishi", "GE", "EATON", "Xtreme Power", "Other"], manufacturer, setManufacturer, "Manufacturer");
   let qtyRange = mapValues([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], qty, setQty, "Qty.");
 
-  let batteriesRange = (   
-    <FormControl sx={{ m: 1, width: '12ch' }} size="small">
-      <TextField   
-        size="small"   
-        id={"batteries" + id}
-        label="Batt. per cabinet"
-        type="number"
-        onChange={(e)=>setBatteries(e.target.value)}
-        value={batteries}
-        InputLabelProps={{
-          shrink: true,
-        }}
-      />   
-        </FormControl>
-  );
+
 
   let cabsRange = (   
     <FormControl sx={{ m: 1, width: '12ch' }} size="small">
@@ -136,8 +120,7 @@ export default function QuotingToolRow(props) {
       {manufacturerRange}
       {modelRange}
       {kvaRange}
-      {qtyRange}
-      {batteriesRange}
+      {qtyRange}    
       {cabsRange}
     </>
   );

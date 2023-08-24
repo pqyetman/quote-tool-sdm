@@ -65,8 +65,7 @@ export default function PdfPricingPage(props) {
     let equipmentArray = [];
     let modelArray = [];
     let kvaArray = [];
-    let qtyArray = [];
-    let battArray = [];
+    let qtyArray = []; 
     let stringsArray = [];
 
     for (let i = 0; i < data.length; i++) {
@@ -74,7 +73,7 @@ export default function PdfPricingPage(props) {
       equipmentArray.push(data[i].manufacturer);
       modelArray.push(data[i].model);
       kvaArray.push(data[i].kva.toString());
-      battArray.push(data[i].batteries.toString());
+ 
       stringsArray.push(data[i].strings.toString());
     }
 
@@ -82,8 +81,7 @@ export default function PdfPricingPage(props) {
       qtyArray,
       equipmentArray,
       modelArray,
-      kvaArray,
-      battArray,
+      kvaArray,    
       stringsArray,
     ];
   }
@@ -170,10 +168,10 @@ export default function PdfPricingPage(props) {
           // headers are automatically repeated if the table spans over multiple pages
           // you can declare how many rows should be treated as headers
           headerRows: 1,
-          widths: ["*", "*", "*", "*", "*", "*"],
+          widths: ["*", "*", "*", "*",  "*"],
 
           body: [
-            ["Qty", "Manufacturer", "Model", "kVA", "Batteries", "Cabinets"],
+            ["Qty", "Manufacturer", "Model", "kVA", "Cabinets per Unit"],
             setTableData(tableData),
           ],
         },
