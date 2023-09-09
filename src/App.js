@@ -2,6 +2,7 @@ import "./App.css";
 import SignIn from "./SignIn";
 import Home from "./Home";
 import QuotingTool from "./QuotingTool";
+import EmployeeUsageCalculator from "./EmployeeUsageCalculator";
 import ButtonAppBar from "./ButtonAppBar";
 import { Route, Switch } from "react-router-dom";
 import { LocalizationProvider } from '@mui/x-date-pickers';
@@ -24,7 +25,10 @@ function App() {
         </Route>
         <Route exact path="/quotingtool">
           <QuotingTool />
-        </Route>   
+        </Route>
+        <Route exact path="/employeeusagecalculator">
+          <EmployeeUsageCalculator />
+        </Route>     
         <Route exact path="/calendar">
           <MyCalendar />
         </Route>  

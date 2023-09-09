@@ -27,26 +27,27 @@ export default function ButtonAppBar() {
             sx={{ mr: 2 }}
           >
             <MenuIcon />
-          </IconButton>
-     
-            <NavLink to="/" style={linkStyles}> 
+          </IconButton>  
+
+          <NavLink to="/" style={linkStyles}>
             <Button color="inherit">Log In</Button>
-            </NavLink>
-          
-          
-            <NavLink to="/home" style={linkStyles}>
-              <Button color="inherit">Home</Button>
-              </NavLink>
-         
-          
+          </NavLink>
+
+          <NavLink to="/home" style={linkStyles}>
+            <Button color="inherit">Home</Button>
+          </NavLink>
+
+          <NavLink to="/employeeusagecalculator" style={linkStyles}>
+            <Button color="inherit">Employee Usage</Button>
+          </NavLink>
+
           <NavLink to="/quotingtool" style={linkStyles}>
             <Button color="inherit">Quoting Tool</Button>
-          </NavLink>  
+          </NavLink>
 
           <NavLink to="/calendar" style={linkStyles}>
             <Button color="inherit">Calendar</Button>
-          </NavLink> 
-            
+          </NavLink>
         </Toolbar>
       </AppBar>
     </Box>
